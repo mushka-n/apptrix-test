@@ -11,11 +11,11 @@ const Users = () => {
     return (
         <div>
             USERS
-            {/* {users.map((u) => (
+            {users.map((u) => (
                 <div>
                     {u.id}, {u.name}, {u.login}, {u.email}
                 </div>
-            ))} */}
+            ))}
         </div>
     );
 };
