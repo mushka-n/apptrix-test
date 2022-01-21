@@ -46,6 +46,9 @@ const $youTrack = axios.create({
     baseURL: process.env.REACT_APP_YOUTRACK_API_URL,
     headers: {
         Authorization: `Bearer ${process.env.REACT_APP_YOUTRACK_API_TOKEN}`,
+        Accept: "application/json",
+        "Cache-Control": "no-cache",
+        "Content-Type": "application/json",
     },
 });
 
