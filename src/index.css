@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    #root,
+    html {
+        @apply text-base m-0 p-0 box-border not-italic bg-gray-50 dark:bg-gray-600;
+    }
+
+    .filters-button {
+        @apply py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200;
+        @apply hover:bg-gray-100 hover:text-blue-800;
+        @apply focus:text-blue-700;
+
+        @apply dark:bg-gray-700 dark:border-gray-600 dark:text-white;
+        @apply dark:hover:text-white dark:hover:bg-gray-800;
+        @apply dark:focus:text-white;
+    }
+
+    /* NavBar */
+
+    .navbar-link {
+        @apply block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50;
+        @apply md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0;
+
+        @apply dark:text-gray-400;
+        @apply dark:hover:bg-gray-700 dark:hover:text-white;
+        @apply md:dark:hover:text-white md:dark:hover:bg-transparent;
+    }
+
+    .navbar-btn {
+        @apply text-white bg-blue-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center;
+        @apply hover:bg-blue-800 focus:ring-4;
+        @apply focus:ring-blue-300;
+
+        @apply dark:bg-purple-600;
+        @apply dark:hover:bg-purple-700;
+        @apply dark:focus:ring-purple-900;
+    }
+
+    /* Table */
+
+    .table-head {
+        @apply bg-gray-50;
+        @apply dark:bg-gray-700;
+    }
+
+    .table-head-text {
+        @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase;
+        @apply dark:text-gray-400;
+    }
+
+    .table-body-row-text-id {
+        @apply py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap;
+        @apply dark:text-white;
+    }
+
+    .table-body-row-text {
+        @apply py-4 px-6 text-sm text-gray-500 whitespace-nowrap;
+        @apply dark:text-gray-400;
+    }
+
+    .table-body-row {
+        @apply bg-white border-b;
+        @apply dark:bg-gray-800 dark:border-gray-700;
+    }
+}

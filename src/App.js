@@ -25,12 +25,18 @@ function App() {
         }
     }, []);
 
-    if (isLoading) return <div> You are not authtorized</div>;
+    if (isLoading) return <div>You are not authtorized</div>;
 
     return (
         <BrowserRouter>
-            <NavBar />
-            <AppRouter />
+            <div>
+                <div className="">
+                    <NavBar />
+                </div>
+                <div className="flex justify-center pb-5">
+                    <AppRouter />
+                </div>
+            </div>
         </BrowserRouter>
     );
 }
