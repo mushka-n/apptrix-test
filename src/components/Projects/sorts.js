@@ -1,3 +1,7 @@
+export const reverseSort = (arr, setArr) => {
+    setArr([...arr].reverse());
+};
+
 export const sortProjectsByID = (arr, setArr) => {
     setArr(
         [...arr].sort((a, b) => {

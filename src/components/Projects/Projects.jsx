@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import youTrackAPI from "../../API/youTrackAPI";
 import Autocomplete from "./Autocomplete";
 import {
+    reverseSort,
     sortProjectsByID,
     sortProjectsByName,
     sortProjectsBySummary,
@@ -9,38 +10,68 @@ import {
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
-    const [projectNames, setProjectNames] = useState([]);
+    const [displayedProjects, setDisplayedProjects] = useState([]);
+    const [currSort, setCurrSort] = useState("");
 
     useEffect(() => {
         youTrackAPI.getProjects().then((data) => {
             setProjects(data);
-            setProjectNames(data.map((p) => p.project.name));
+            sortProjectsByID(data, setDisplayedProjects);
         });
     }, []);
 
     return (
         <div>
             <div>
-                <Autocomplete projects={projects} />
+                <Autocomplete
+                    projects={[...projects]}
+                    setDisplayedProjects={setDisplayedProjects}
+                />
             </div>
             <div>
-                <button onClick={() => sortProjectsByID(projects, setProjects)}>
+                <button
+                    onClick={() => {
+                        sortProjectsByID(
+                            displayedProjects,
+                            setDisplayedProjects
+                        );
+                        setCurrSort("id");
+                    }}
+                >
                     id
                 </button>
                 <button
-                    onClick={() => sortProjectsBySummary(projects, setProjects)}
+                    onClick={() => {
+                        sortProjectsBySummary(
+                            displayedProjects,
+                            setDisplayedProjects
+                        );
+                        setCurrSort("summary");
+                    }}
                 >
                     summary
                 </button>
                 <button
-                    onClick={() => sortProjectsByName(projects, setProjects)}
+                    onClick={() => {
+                        sortProjectsByName(
+                            displayedProjects,
+                            setDisplayedProjects
+                        );
+                        setCurrSort("name");
+                    }}
                 >
                     name
                 </button>
-                <button>/\</button>
+                <button
+                    onClick={() =>
+                        reverseSort(displayedProjects, setDisplayedProjects)
+                    }
+                >
+                    /\
+                </button>
             </div>
             Projects
-            {projects.map((p) => (
+            {displayedProjects.map((p) => (
                 <div key={p.id}>
                     {p.id} ||| {p.summary} ||| {p.project.name}
                 </div>
