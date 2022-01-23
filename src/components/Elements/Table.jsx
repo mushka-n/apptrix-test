@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Table = ({ arr, cols, keys, head }) => {
+const Table = ({ arr, cols }) => {
     const navigate = useNavigate();
 
     const getValueFromObj = (obj, layers) => {
@@ -19,12 +19,7 @@ const Table = ({ arr, cols, keys, head }) => {
         let value = a[c.key];
         if (!value) value = getValueFromObj(a, c.key.split("."));
         if (c.processData) value = c.processData(value);
-
-        return (
-            <td key={a[c.key]} className={c.className}>
-                {value}
-            </td>
-        );
+        return <div className={c.className}>{value}</div>;
     };
 
     const processTableItemLink = (a, c) => {
@@ -36,9 +31,9 @@ const Table = ({ arr, cols, keys, head }) => {
         });
 
         return (
-            <td className={c.className} onClick={() => navigate(href)}>
+            <div className={c.className} onClick={() => navigate(href)}>
                 {c.text}
-            </td>
+            </div>
         );
     };
 
@@ -53,6 +48,7 @@ const Table = ({ arr, cols, keys, head }) => {
                                     <tr>
                                         {cols.map((c) => (
                                             <th
+                                                key={c.head}
                                                 scope="col"
                                                 className="table-head-text"
                                             >
@@ -64,12 +60,14 @@ const Table = ({ arr, cols, keys, head }) => {
                                 <tbody>
                                     {arr.map((a) => (
                                         <tr
-                                            className="table-body-row"
                                             key={a.id}
+                                            className="table-body-row"
                                         >
-                                            {cols.map((c) =>
-                                                processTableItem(a, c)
-                                            )}
+                                            {cols.map((c) => (
+                                                <td key={c.key}>
+                                                    {processTableItem(a, c)}
+                                                </td>
+                                            ))}
                                         </tr>
                                     ))}
                                 </tbody>

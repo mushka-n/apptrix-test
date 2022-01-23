@@ -3,14 +3,20 @@ import { $youTrack } from ".";
 export default class youTrackAPI {
     static async getUsers() {
         const { data } = await $youTrack.get(
-            `${process.env.REACT_APP_YOUTRACK_API_URL}users/?fields=id,name,login,email`
+            `users/?fields=id,name,login,email`
         );
         return data;
     }
 
+    static async getUser(id) {
+        const { data } = await $youTrack.get(
+            `users/${id}/?fields=id,name,login,email`
+        );
+        return data;
+    }
     static async getProjects() {
         const { data } = await $youTrack.get(
-            `${process.env.REACT_APP_YOUTRACK_API_URL}issues?fields=id,summary,project(name)`
+            `issues?fields=id,summary,project(name)`
         );
         return data;
     }
@@ -22,3 +28,5 @@ export default class youTrackAPI {
         return data;
     }
 }
+
+youTrackAPI.getUser("1-64").then((data) => console.log(data));

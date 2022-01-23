@@ -102,7 +102,7 @@ const Autocomplete = ({ projects, setDisplayedProjects }) => {
                     Find project by name
                 </label>
                 <input
-                    autocomplete="off"
+                    autoComplete="off"
                     id="input"
                     type="text"
                     onChange={onChange}
