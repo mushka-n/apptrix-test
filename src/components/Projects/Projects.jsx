@@ -49,12 +49,12 @@ const Projects = () => {
                         },
                         {
                             text: "Summary",
-                            fun: sortProjectsByID,
+                            fun: sortProjectsBySummary,
                             className: "filters-button",
                         },
                         {
                             text: "Name",
-                            fun: sortProjectsByID,
+                            fun: sortProjectsByName,
                             className: "filters-button rounded-r-md",
                         },
                     ].map((fb) => (
