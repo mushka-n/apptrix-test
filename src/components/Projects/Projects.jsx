@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import youTrackAPI from "../../API/youTrackAPI";
 import { TIMESHEET_ROUTE } from "../../consts";
 import ArrowDown from "../../images/svgs/ArrowDown";
-import Table from "../Elements/Table";
-import Autocomplete from "./Autocomplete";
+import Table from "../Elements/Table/Table";
+import Autocomplete from "../Elements/Autocomplete";
 import {
     reverseSort,
     sortProjectsByID,
@@ -29,8 +29,8 @@ const Projects = () => {
     }, []);
 
     return (
-        <div>
-            <div>
+        <div className="mt-2 mb-4">
+            <div className="mb-3">
                 <Autocomplete
                     projects={[...projects]}
                     setDisplayedProjects={setDisplayedProjects}
@@ -41,51 +41,39 @@ const Projects = () => {
                 role="group"
             >
                 <div>
-                    <button
-                        type="button"
-                        className="filters-button rounded-l-md"
-                        onClick={() => {
-                            setToggle("rotate-0");
-                            sortProjectsByID(
-                                displayedProjects,
-                                setDisplayedProjects
-                            );
-                        }}
-                    >
-                        ID
-                    </button>
-                    <button
-                        type="button"
-                        className="filters-button"
-                        onClick={() => {
-                            setToggle("rotate-0");
-                            sortProjectsBySummary(
-                                displayedProjects,
-                                setDisplayedProjects
-                            );
-                        }}
-                    >
-                        Summary
-                    </button>
-                    <button
-                        type="button"
-                        className="filters-button rounded-r-md"
-                        onClick={() => {
-                            setToggle("rotate-0");
-                            sortProjectsByName(
-                                displayedProjects,
-                                setDisplayedProjects
-                            );
-                        }}
-                    >
-                        Name
-                    </button>
+                    {[
+                        {
+                            text: "ID",
+                            fun: sortProjectsByID,
+                            className: "filters-button rounded-l-md",
+                        },
+                        {
+                            text: "Summary",
+                            fun: sortProjectsByID,
+                            className: "filters-button",
+                        },
+                        {
+                            text: "Name",
+                            fun: sortProjectsByID,
+                            className: "filters-button rounded-r-md",
+                        },
+                    ].map((fb) => (
+                        <button
+                            type="button"
+                            className={fb.className}
+                            onClick={() => {
+                                setToggle("rotate-0");
+                                fb.fun(displayedProjects, setDisplayedProjects);
+                            }}
+                        >
+                            {fb.text}
+                        </button>
+                    ))}
                 </div>
 
                 <div className="ml-10">
                     <button
-                        className={`filters-button rounded-md h-full
-                        transition ease-in duration-100 `}
+                        className="filters-button rounded-md h-full"
                         onClick={() => {
                             reverseSort(
                                 displayedProjects,
@@ -95,11 +83,7 @@ const Projects = () => {
                         }}
                     >
                         <div
-                            className={`
-                                ${toggle} 
-                                transition ease-in duration-100
-                                w-5 h-full p-0.5
-                            `}
+                            className={`${toggle} transition ease-in duration-100 w-5 h-full p-0.5 `}
                         >
                             <ArrowDown
                                 className={"h-full w-full"}

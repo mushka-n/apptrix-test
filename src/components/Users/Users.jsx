@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import youTrackAPI from "../../API/youTrackAPI";
 import { USER_ROUTE } from "../../consts";
-import Table from "../Elements/Table";
+import Table from "../Elements/Table/Table";
 
 const Users = () => {
     const [users, setUsers] = useState([]);

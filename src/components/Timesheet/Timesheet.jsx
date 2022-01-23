@@ -1,17 +1,20 @@
 import React from "react";
 import { useState } from "react";
+import { useRef } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import youTrackAPI from "../../API/youTrackAPI";
-import Table from "../Elements/Table";
+import Table from "../Elements/Table/Table";
 
 const Timesheet = () => {
     const { id } = useParams();
     const [workItems, setWorkItems] = useState([]);
 
+    const table = useRef(null);
+
     useEffect(() => {
         youTrackAPI.getWorkItems(id).then((data) => {
-            console.log(data.reverse());
             setWorkItems(data);
         });
     }, []);
@@ -30,7 +33,7 @@ const Timesheet = () => {
         <div className="container flex justify-center">
             {workItems.length ? (
                 <div className="w-full flex flex-col xl:flex-row justify-around">
-                    <div className="mb-5 self-stretch">
+                    <div ref={table} className="mb-5 self-stretch">
                         <Table
                             arr={workItems}
                             cols={[
@@ -61,7 +64,7 @@ const Timesheet = () => {
                     </div>
                     <ol className="relative border-l border-gray-200 dark:border-gray-700">
                         {workItems.map((wi) => (
-                            <li className="mb-10 ml-4">
+                            <li key={wi.id} className="mb-10 ml-4">
                                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border-2 border-white dark:border-purple-800 dark:bg-purple-600"></div>
                                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                                     {dateFromUnix(wi.date)}

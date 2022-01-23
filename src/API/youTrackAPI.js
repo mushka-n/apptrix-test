@@ -28,5 +28,3 @@ export default class youTrackAPI {
         return data;
     }
 }
-
-youTrackAPI.getUser("1-64").then((data) => console.log(data));

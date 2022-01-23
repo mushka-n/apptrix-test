@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import youTrackAPI from "../../API/youTrackAPI";
-import Table from "../Elements/Table";
+import Table from "../Elements/Table/Table";
 
 const User = () => {
     const { id } = useParams();
