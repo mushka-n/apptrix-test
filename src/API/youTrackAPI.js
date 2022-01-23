@@ -14,4 +14,11 @@ export default class youTrackAPI {
         );
         return data;
     }
+
+    static async getWorkItems(issueId) {
+        const { data } = await $youTrack.get(
+            `issues/${issueId}/timeTracking/workItems?fields=id,creator(name),date,duration(minutes)`
+        );
+        return data;
+    }
 }

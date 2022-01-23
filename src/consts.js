@@ -1,5 +1,5 @@
 export const LOGIN_ROUTE = "/login";
-export const MAIN_ROUTE = "/main";
 export const USERS_ROUTE = "/users";
+export const USER_ROUTE = "/user";
 export const PROJECTS_ROUTE = "/projects";
-export const TIMESHEETS_ROUTE = "/timesheets";
+export const TIMESHEET_ROUTE = "/timesheet";

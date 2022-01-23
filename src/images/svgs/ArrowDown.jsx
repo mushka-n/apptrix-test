@@ -3,7 +3,7 @@ import React from "react";
 const ArrowDown = ({ className, fill = "myDark" }) => {
     return (
         <svg
-            className={`${className}`}
+            className={`${className} rotate-180`}
             width="25"
             height="20"
             viewBox="0 0 25 20"

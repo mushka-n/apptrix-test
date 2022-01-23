@@ -8,6 +8,14 @@
         @apply text-base m-0 p-0 box-border not-italic bg-gray-50 dark:bg-gray-600;
     }
 
+    .input {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+    }
+
+    .input-label {
+        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+    }
+
     .filters-button {
         @apply py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200;
         @apply hover:bg-gray-100 hover:text-blue-800;
@@ -51,9 +59,9 @@
         @apply dark:text-gray-400;
     }
 
-    .table-body-row-text-id {
-        @apply py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap;
-        @apply dark:text-white;
+    .table-body-row {
+        @apply bg-white border-b;
+        @apply dark:bg-gray-800 dark:border-gray-700;
     }
 
     .table-body-row-text {
@@ -61,8 +69,15 @@
         @apply dark:text-gray-400;
     }
 
-    .table-body-row {
-        @apply bg-white border-b;
-        @apply dark:bg-gray-800 dark:border-gray-700;
+    .table-body-row-text-id {
+        @apply table-body-row-text;
+        @apply font-medium text-gray-900;
+        @apply dark:text-white;
+    }
+
+    .table-body-row-link {
+        @apply table-body-row-text;
+        @apply text-blue-600 hover:text-blue-900;
+        @apply dark:text-purple-500 dark:hover:text-purple-300;
     }
 }

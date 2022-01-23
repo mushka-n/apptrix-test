@@ -72,7 +72,7 @@ const Autocomplete = ({ projects, setDisplayedProjects }) => {
                             "py-1 text-center rounded-md cursor-pointer dark:hover:bg-gray-800 hover:bg-gray-100 hover:text-blue-800";
                         if (index === activeSuggestion) {
                             className +=
-                                " bg-gray-100 text-blue-800 dark:bg-gray-800";
+                                " bg-gray-100 text-blue-800 dark:text-white dark:bg-gray-800";
                         }
                         return (
                             <li
@@ -98,19 +98,17 @@ const Autocomplete = ({ projects, setDisplayedProjects }) => {
     return (
         <div>
             <Fragment>
-                <label
-                    htmlFor="input"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
+                <label htmlFor="input" className="input-label">
                     Find project by name
                 </label>
                 <input
+                    autocomplete="off"
                     id="input"
                     type="text"
                     onChange={onChange}
                     onKeyDown={onKeyDown}
                     value={userInput}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="input"
                 />
                 {suggestionsListComponent}
             </Fragment>

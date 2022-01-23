@@ -17,17 +17,37 @@ const Authorization = () => {
 
     return (
         <div>
-            <input
-                onChange={(e) => setUsername(e.target.value)}
-                type="text"
-                placeholder={username}
-            />
-            <input
-                onChange={(e) => setPasswword(e.target.value)}
-                type="text"
-                placeholder={password}
-            />
-            <button onClick={login}>login</button>
+            <div>
+                <div className="mb-3">
+                    <label htmlFor="password" className="input-label">
+                        Username
+                    </label>
+                    <input
+                        onChange={(e) => setUsername(e.target.value)}
+                        type="text"
+                        placeholder={username}
+                        className="input"
+                    />
+                </div>
+
+                <div className="mb-5">
+                    <label htmlFor="password" className="input-label">
+                        Password
+                    </label>
+                    <input
+                        id="password"
+                        onChange={(e) => setPasswword(e.target.value)}
+                        type="text"
+                        placeholder={password}
+                        className="input"
+                    />
+                </div>
+            </div>
+            <div className="w-full flex justify-end">
+                <button className="navbar-btn" onClick={login}>
+                    login
+                </button>
+            </div>
         </div>
     );
 };
