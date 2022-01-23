@@ -67,7 +67,7 @@ const Table = ({ arr, cols }) => {
                                         {arr.map((a) => (
                                             <tr
                                                 key={a.id}
-                                                className="table-body-row"
+                                                className=" table-body-row"
                                             >
                                                 {cols.map((c) => (
                                                     <td key={c.head}>
